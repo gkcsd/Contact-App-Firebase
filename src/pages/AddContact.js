@@ -151,7 +151,7 @@ const AddContact = () => {
 
   // to handle update the contact when there is contact in state and the user had came from clicking the contact update icon
   const updateContact = async () => {
-    //TODO: update contact method
+    //TODO: DONE, update contact method
     try {
       firebase.database().ref('contacts/' + contactToUpdateKey)
         .set({
@@ -168,6 +168,11 @@ const AddContact = () => {
   // firing when the user click on submit button or the form has been submitted
   const handleSubmit = e => {
     e.preventDefault();
+    isUpdate ? updateContact : addContact;
+    
+    toast("Success", {
+      type: "error"
+    })
 
     // isUpdate wll be true when the user came to update the contact
     // when their is contact then updating and when no contact to update then adding contact
